@@ -1,7 +1,8 @@
-import pygame
-import sys
-import random
 import math
+import random
+import sys
+
+import pygame
 
 # =========================
 # Konfigurasi Permainan
@@ -67,11 +68,20 @@ def main():
     font = pygame.font.SysFont("Consolas", SCORE_FONT_SIZE)
 
     # Inisialisasi paddle
-    player = pygame.Rect(40, HEIGHT // 2 - PADDLE_HEIGHT // 2, PADDLE_WIDTH, PADDLE_HEIGHT)
-    ai = pygame.Rect(WIDTH - 40 - PADDLE_WIDTH, HEIGHT // 2 - PADDLE_HEIGHT // 2, PADDLE_WIDTH, PADDLE_HEIGHT)
+    player = pygame.Rect(
+        40, HEIGHT // 2 - PADDLE_HEIGHT // 2, PADDLE_WIDTH, PADDLE_HEIGHT
+    )
+    ai = pygame.Rect(
+        WIDTH - 40 - PADDLE_WIDTH,
+        HEIGHT // 2 - PADDLE_HEIGHT // 2,
+        PADDLE_WIDTH,
+        PADDLE_HEIGHT,
+    )
 
     # Inisialisasi bola
-    ball = pygame.Rect(WIDTH // 2 - BALL_SIZE // 2, HEIGHT // 2 - BALL_SIZE // 2, BALL_SIZE, BALL_SIZE)
+    ball = pygame.Rect(
+        WIDTH // 2 - BALL_SIZE // 2, HEIGHT // 2 - BALL_SIZE // 2, BALL_SIZE, BALL_SIZE
+    )
     ball_vx, ball_vy = reset_ball(ball, direction=random.choice([-1, 1]))
 
     # Skor
@@ -80,7 +90,9 @@ def main():
 
     running = True
     while running:
-        dt = clock.tick(FPS) / 1000.0  # Tidak terlalu penting, tapi bisa dipakai jika ingin gerakan berbasis waktu
+        dt = (
+            clock.tick(FPS) / 1000.0
+        )  # Tidak terlalu penting, tapi bisa dipakai jika ingin gerakan berbasis waktu
 
         # -------------------------
         # Event Handling
@@ -203,7 +215,9 @@ def main():
 
         # Info kontrol
         info_font = pygame.font.SysFont("Consolas", 20)
-        info_text = info_font.render("Controls: W = Up, S = Down, Esc = Quit", True, (160, 160, 160))
+        info_text = info_font.render(
+            "Controls: W = Up, S = Down, Esc = Quit", True, (160, 160, 160)
+        )
         screen.blit(info_text, (WIDTH // 2 - info_text.get_width() // 2, HEIGHT - 30))
 
         pygame.display.flip()
